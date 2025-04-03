@@ -1,0 +1,94 @@
+{
+  "cyberRisks": [
+    {
+      "id": 1,
+      "title": "Phishing",
+      "description": "Phishing é uma técnica usada por hackers para enganar as pessoas e roubar informações sensíveis, como senhas e números de cartão de crédito.",
+      "howItWorks": "Eles enviam e-mails ou mensagens falsas que parecem ser de empresas confiáveis, como bancos ou redes sociais, pedindo que você clique em links ou forneça dados pessoais.",
+      "howToProtect": "Nunca clique em links suspeitos. Verifique sempre o remetente e, em caso de dúvida, acesse o site diretamente pelo navegador."
+    },
+    {
+      "id": 2,
+      "title": "Senhas fracas",
+      "description": "Senhas fracas são aquelas fáceis de adivinhar, como '123456', 'senha', ou o nome de um familiar.",
+      "howItWorks": "Hackers usam ferramentas automatizadas para testar milhares de senhas comuns em segundos.",
+      "howToProtect": "Use senhas longas e complexas, com combinações de letras, números e símbolos. Evite informações pessoais."
+    },
+    {
+      "id": 3,
+      "title": "Engenharia social",
+      "description": "Engenharia social é a arte de manipular pessoas para obter informações confidenciais.",
+      "howItWorks": "Hackers podem se passar por alguém de confiança, como um colega de trabalho ou um técnico de suporte, para enganar você.",
+      "howToProtect": "Desconfie de solicitações inesperadas de informações pessoais. Sempre verifique a identidade da pessoa ou empresa."
+    },
+    {
+      "id": 4,
+      "title": "Malware",
+      "description": "Malware é um software malicioso projetado para danificar ou acessar sistemas sem permissão.",
+      "howItWorks": "Ele pode ser instalado no seu dispositivo ao clicar em links suspeitos, baixar arquivos infectados ou conectar dispositivos desconhecidos.",
+      "howToProtect": "Mantenha seu antivírus atualizado, evite sites suspeitos e não baixe arquivos de fontes desconhecidas."
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "cpf": "123.456.789-01",
+      "name": "João Silva",
+      "position": "Estagiário",
+      "department": "TI",
+      "hobbies": ["futebol", "música"],
+      "birthdate": "1998-05-15",
+      "pet": "Rex",
+      "password": "joaofutebol98",
+      "difficulty": "Fácil"
+    },
+    {
+      "id": 2,
+      "cpf": "234.567.890-12",
+      "name": "Ana Souza",
+      "position": "Analista de Marketing",
+      "department": "Marketing",
+      "hobbies": ["Games", "Vôlei"],
+      "birthdate": "1990-07-22",
+      "pet": "Luna",
+      "password": "anavolei90",
+      "difficulty": "Fácil"
+    },
+    {
+      "id": 3,
+      "cpf": "345.678.901-23",
+      "name": "Carlos Oliveira",
+      "position": "Gerente de Vendas",
+      "department": "Vendas",
+      "hobbies": ["leitura", "cinema"],
+      "birthdate": "1985-11-10",
+      "favoriteTeam": "Flamengo",
+      "password": "carlosfla85",
+      "difficulty": "Difícil"
+    },
+    {
+      "id": 4,
+      "cpf": "456.789.012-34",
+      "name": "Mariana Costa",
+      "position": "Diretora Financeira",
+      "department": "Financeiro",
+      "hobbies": ["yoga", "culinária"],
+      "birthdate": "1980-03-25",
+      "childName": "Pedro",
+      "password": "marianayoga80",
+      "difficulty": "Médio"
+    },
+    {
+      "id": 5,
+      "cpf": "567.890.123-45",
+      "name": "Ricardo Almeida",
+      "position": "CEO",
+      "department": "Diretoria",
+      "hobbies": ["golfe", "vinhos"],
+      "birthdate": "1975-09-12",
+      "spouseName": "Fernanda",
+      "password": "ricardogolfe75",
+      "difficulty": "Difícil"
+    }
+  ]
+}
