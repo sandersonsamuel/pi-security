@@ -1,15 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { EmployeeBadge } from "@/components/employee-badge"
-import { LoginModal } from "@/components/login-modal"
-import { CyberRisksInfo } from "@/components/cyber-risks-info"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { employees, cyberRisks } from "../../../data.json"
-import type { Employee } from "@/lib/types"
-import Image from "next/image"
-import { GameEndModal } from "@/components/game-end-modal"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { EmployeeBadge } from "@/components/employee-badge";
+import { LoginModal } from "@/components/login-modal";
+import { CyberRisksInfo } from "@/components/cyber-risks-info";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { Employee } from "@/lib/types";
+import Image from "next/image";
+import { GameEndModal } from "@/components/game-end-modal";
+
+import data from "../../../data.json";
+
+const employees = data.employees;
+const cyberRisks = data.cyberRisks;
 
 const medals = [
   {
@@ -39,61 +43,68 @@ const medals = [
     bgColor: "bg-purple-100",
     borderColor: "border-purple-400",
   },
-]
+];
 
 export default function Home() {
-  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null)
-  const [showLoginModal, setShowLoginModal] = useState(false)
-  const [successfulHacks, setSuccessfulHacks] = useState<number[]>([])
-  const [gameEnded, setGameEnded] = useState(false)
-  const [showGameEndModal, setShowGameEndModal] = useState(false)
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(
+    null
+  );
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [successfulHacks, setSuccessfulHacks] = useState<number[]>([]);
+  const [gameEnded, setGameEnded] = useState(false);
+  const [showGameEndModal, setShowGameEndModal] = useState(false);
 
   const handleEmployeeClick = (employee: Employee) => {
-    setSelectedEmployee(employee)
-    setShowLoginModal(true)
-  }
+    setSelectedEmployee(employee);
+    setShowLoginModal(true);
+  };
 
   const handleHackSuccess = (employeeId: number) => {
     if (!successfulHacks.includes(employeeId)) {
-      setSuccessfulHacks([...successfulHacks, employeeId])
+      setSuccessfulHacks([...successfulHacks, employeeId]);
     }
-    setShowLoginModal(false)
-  }
+    setShowLoginModal(false);
+  };
 
   const handleLoginFailure = () => {
-    setSelectedEmployee(null)
-    setShowLoginModal(false)
-    setGameEnded(true)
-    setShowGameEndModal(true)
-  }
+    setSelectedEmployee(null);
+    setShowLoginModal(false);
+    setGameEnded(true);
+    setShowGameEndModal(true);
+  };
 
   const handleRestartGame = () => {
-    setSuccessfulHacks([])
-    setGameEnded(false)
-    setShowGameEndModal(false)
-    setSelectedEmployee(null)
-    setShowLoginModal(false)
-  }
+    setSuccessfulHacks([]);
+    setGameEnded(false);
+    setShowGameEndModal(false);
+    setSelectedEmployee(null);
+    setShowLoginModal(false);
+  };
 
-  const progressPercentage = (successfulHacks.length / employees.length) * 100
-  const progressRatio = successfulHacks.length / employees.length
+  const progressPercentage = (successfulHacks.length / employees.length) * 100;
+  const progressRatio = successfulHacks.length / employees.length;
 
   const isUnlocked = (medal: (typeof medals)[0]) => {
-    return successfulHacks.length >= medal.threshold
-  }
+    return successfulHacks.length >= medal.threshold;
+  };
 
   // Encontra a maior medalha conquistada
   const getHighestMedal = () => {
-    const unlockedMedals = medals.filter((medal) => isUnlocked(medal))
-    return unlockedMedals.length > 0 ? unlockedMedals[unlockedMedals.length - 1] : null
-  }
+    const unlockedMedals = medals.filter((medal) => isUnlocked(medal));
+    return unlockedMedals.length > 0
+      ? unlockedMedals[unlockedMedals.length - 1]
+      : null;
+  };
 
   return (
     <main className="container mx-auto px-4">
       <div className="text-white p-4 mb-8 rounded-lg bg-foreground">
-        <h1 className="text-3xl font-bold text-center">Desafio de Segurança Cibernética</h1>
+        <h1 className="text-3xl font-bold text-center">
+          Desafio de Segurança Cibernética
+        </h1>
         <p className="text-center mt-2">
-          Tente hackear as contas dos funcionários usando as informações disponíveis nos crachás
+          Tente hackear as contas dos funcionários usando as informações
+          disponíveis nos crachás
         </p>
       </div>
 
@@ -109,7 +120,9 @@ export default function Home() {
               <div key={employee.id} className="relative">
                 <EmployeeBadge
                   employee={employee as Employee}
-                  onClick={() => !gameEnded && handleEmployeeClick(employee as Employee)}
+                  onClick={() =>
+                    !gameEnded && handleEmployeeClick(employee as Employee)
+                  }
                 />
                 {successfulHacks.includes(employee.id) && (
                   <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-md text-xs font-bold">
@@ -118,7 +131,9 @@ export default function Home() {
                 )}
                 {gameEnded && (
                   <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold">JOGO FINALIZADO</span>
+                    <span className="text-white font-bold">
+                      JOGO FINALIZADO
+                    </span>
                   </div>
                 )}
               </div>
@@ -132,12 +147,14 @@ export default function Home() {
       </Tabs>
 
       <div className="mt-8 p-6 bg-slate-100 rounded-lg">
-        <h2 className="text-xl font-bold mb-6 text-center">Progresso do Desafio</h2>
+        <h2 className="text-xl font-bold mb-6 text-center">
+          Progresso do Desafio
+        </h2>
 
         {/* Medalhas */}
         <div className="flex justify-center items-end mb-4 space-x-2 md:space-x-4">
           {medals.map((medal) => {
-            const unlocked = isUnlocked(medal)
+            const unlocked = isUnlocked(medal);
 
             return (
               <div
@@ -148,7 +165,8 @@ export default function Home() {
               >
                 <div
                   className={`rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
-                    unlocked && `${medal.bgColor} ${medal.borderColor} shadow-lg`
+                    unlocked &&
+                    `${medal.bgColor} ${medal.borderColor} shadow-lg`
                   }`}
                 >
                   <Image
@@ -162,12 +180,16 @@ export default function Home() {
                   />
                 </div>
                 <div className="text-center mt-2">
-                  <p className={`text-xs font-semibold ${unlocked ? "text-gray-800" : "text-gray-500"}`}>
+                  <p
+                    className={`text-xs font-semibold ${
+                      unlocked ? "text-gray-800" : "text-gray-500"
+                    }`}
+                  >
                     {medal.name}
                   </p>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -182,7 +204,9 @@ export default function Home() {
             <div className="absolute inset-0 bg-white opacity-20 animate-pulse"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-sm font-bold text-gray-700">{Math.round(progressPercentage)}%</span>
+            <span className="text-sm font-bold text-gray-700">
+              {Math.round(progressPercentage)}%
+            </span>
           </div>
         </div>
 
@@ -194,13 +218,14 @@ export default function Home() {
         {progressRatio < 1 && !gameEnded && (
           <div className="mt-4 text-center">
             {(() => {
-              const nextMedal = medals.find((medal) => !isUnlocked(medal))
+              const nextMedal = medals.find((medal) => !isUnlocked(medal));
               if (nextMedal) {
-                const remaining = nextMedal.threshold - successfulHacks.length
+                const remaining = nextMedal.threshold - successfulHacks.length;
 
                 return (
                   <p className="text-sm text-gray-600">
-                    Próxima medalha: <span className="font-semibold">{nextMedal.name}</span>
+                    Próxima medalha:{" "}
+                    <span className="font-semibold">{nextMedal.name}</span>
                     {remaining > 0 && (
                       <span>
                         {" "}
@@ -208,7 +233,7 @@ export default function Home() {
                       </span>
                     )}
                   </p>
-                )
+                );
               }
             })()}
           </div>
@@ -242,5 +267,5 @@ export default function Home() {
         totalEmployees={employees.length}
       />
     </main>
-  )
+  );
 }
