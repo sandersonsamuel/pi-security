@@ -24,7 +24,7 @@ export const Risks = () => {
               className={classNames(
                 "cursor-pointer transition-colors duration-200",
                 risk.id === riskSelected
-                  ? "bg-secondary ring ring-primary"
+                  ? "bg-secondary hover:bg-secondary text-primary ring ring-primary"
                   : "bg-primary text-secondary"
               )}
               key={risk.id}
