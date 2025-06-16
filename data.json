@@ -39,7 +39,7 @@
       "hobbies": ["futebol", "música"],
       "birthdate": "1998-05-15",
       "pet": "Rex",
-      "password": "joaofutebol98",
+      "password": "joaofutebol",
       "difficulty": "Fácil"
     },
     {
@@ -51,7 +51,7 @@
       "hobbies": ["Games", "Vôlei"],
       "birthdate": "1990-07-22",
       "pet": "Luna",
-      "password": "anavolei90",
+      "password": "anagames",
       "difficulty": "Fácil"
     },
     {
@@ -87,7 +87,7 @@
       "hobbies": ["golfe", "vinhos"],
       "birthdate": "1975-09-12",
       "spouseName": "Fernanda",
-      "password": "ricardogolfe75",
+      "password": "fernanda75",
       "difficulty": "Difícil"
     }
   ]
