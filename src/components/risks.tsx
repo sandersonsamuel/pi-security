@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { cyberRisks } from "../../data.json";
+import data from "../../data.json";
 import { Button } from "./ui/button";
 import classNames from "classnames";
+
+const cyberRisks = data.cyberRisks;
 
 export const Risks = () => {
   const [riskSelected, setRiskSelected] = useState<number>(1);
